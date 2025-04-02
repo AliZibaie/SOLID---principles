@@ -70,4 +70,19 @@ To follow LSP:
 
 ---
 
-This structure follows SOLID principles and ensures **scalability, maintainability, and flexibility** in Laravel applications.
+## **D - Dependency Inversion Principle (DIP)**
+> **High-level modules should not depend on low-level modules. Both should depend on abstractions.**
+
+- **Abstractions should not depend on details; details should depend on abstractions.**
+
+### **Example in Laravel:**
+- Instead of injecting concrete child classes into controllers, inject an **interface**.
+- Use **Dependency Injection (DI)** by type-hinting the interface in the controller's constructor.
+- Register the interface binding in a **service provider**, ensuring that every time the interface is requested, the appropriate child class is instantiated.
+
+### **Conditional Dependency Injection:**
+- In the service provider, instantiate different implementations based on the environment:
+  - **Local environment:** Use a `Test` implementation.
+  - **Production environment:** Use the real implementation.
+
+This ensures flexibility and scalability while maintaining clean and maintainable code.
